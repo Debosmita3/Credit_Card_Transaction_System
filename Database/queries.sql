@@ -41,7 +41,7 @@ LIMIT 5;
 
 -- -----------------------------------------------------------------------------------------------------
 --  Query 3
---  Category-wise vendors spending
+--  Category-wise vendors earning
 -- -----------------------------------------------------------------------------------------------------
 SELECT
 	v.category,
@@ -130,7 +130,8 @@ SELECT
     card_no,
     credit_limit,
     expiry_date,
-    status
+    status,
+    count
 FROM cte_card_usage
 WHERE count=(SELECT MAX(count) FROM cte_card_usage);
 -- -----------------------------------------------------------------------------------------------------
