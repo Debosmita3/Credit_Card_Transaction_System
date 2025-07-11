@@ -1,0 +1,2 @@
+transaction_id,amount,customer_name,transaction_date,vendor_name,category
+3,78000.00,"Sourav Das","2025-06-13 12:30:00",Flipkart,Electronics

@@ -1,0 +1,6 @@
+customer_id,customer_name,customer_email,customer_phone,customer_address,amount_spent
+3,"Sourav Das",sourav.das03@example.com,9123456789,"Ballygunge, Kolkata",97300.00
+5,"Vikram Joshi",vikram.joshi05@example.com,9898989898,"Pune, Maharashtra",31900.00
+7,"Karan Kapoor",karan.kapoor07@example.com,9911223344,"Delhi NCR",12399.00
+11,"Alok Reddy",alok.reddy11@example.com,9494949494,"Hyderabad, Telangana",16500.00
+12,"Isha Jain",isha.jain12@example.com,8899776655,"Jaipur, Rajasthan",25149.00
