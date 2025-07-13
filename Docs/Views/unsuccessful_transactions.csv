@@ -1,0 +1,12 @@
+customer_id,customer_name,transaction_id,amount,transaction_date,card_used,vendor_name,category,status
+4,"Priya Mehta",5,4500.00,"2025-06-16 18:10:00",4539876543210004,Zomato,"Food Delivery",failed
+5,"Vikram Joshi",7,1450.00,"2025-06-17 14:15:00",4539876543210035,Croma,Electronics,reversed
+9,"Ravi Shankar",12,6900.00,"2025-06-21 08:00:00",4539876543210009,Tanishq,Jewellery,failed
+10,"Tanvi Sharma",14,1500.00,"2025-06-22 10:30:00",4539876543210010,Nykaa,Beauty,reversed
+15,"Aman Verma",20,3200.00,"2025-06-25 13:00:00",4539876543210015,FirstCry,"Baby Products",reversed
+18,"Rohan Nair",23,8700.00,"2025-06-27 07:15:00",4539876543210018,Pantaloons,Fashion,failed
+23,"Tanya Paul",28,9900.00,"2025-06-29 09:30:00",4539876543210023,"Star Bazaar",Grocery,reversed
+1,"Rahul Sen",31,7200.00,"2025-06-29 18:00:00",4539876543210001,"Air India","Air Travel",failed
+6,"Meera Iyer",38,990.00,"2025-07-01 13:10:00",4539876543210006,"Big Bazaar",Grocery,reversed
+9,"Ravi Shankar",42,999.00,"2025-07-02 14:30:00",4539876543210009,Zomato,"Food Delivery",failed
+12,"Isha Jain",47,870.00,"2025-07-03 15:50:00",4539876543210042,FabIndia,Clothing,reversed

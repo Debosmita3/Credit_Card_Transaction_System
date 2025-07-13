@@ -1,0 +1,41 @@
+vendor_id,vendor_name,category,city
+1,Flipkart,Electronics,Bangalore
+2,Amazon,E-commerce,Hyderabad
+3,"Big Bazaar",Grocery,Mumbai
+4,Myntra,Fashion,Bangalore
+5,Spencer’s,Grocery,Kolkata
+6,"Reliance Digital",Electronics,Delhi
+7,Tanishq,Jewellery,Chennai
+8,MakeMyTrip,Travel,Gurgaon
+9,Swiggy,"Food Delivery",Bangalore
+10,Zomato,"Food Delivery",Delhi
+11,DMart,Retail,Pune
+12,Ajio,Fashion,Mumbai
+13,Nykaa,Beauty,Mumbai
+14,Croma,Electronics,Chennai
+15,Uber,Transport,Delhi
+16,Ola,Transport,Bangalore
+17,BookMyShow,Entertainment,Mumbai
+18,Cleartrip,Travel,Bangalore
+19,"Tata CLiQ",E-commerce,Mumbai
+20,Blinkit,Grocery,Delhi
+21,"Reliance Fresh",Grocery,Kolkata
+22,Pepperfry,Furniture,Mumbai
+23,FirstCry,"Baby Products",Pune
+24,Decathlon,Sports,Chennai
+25,"Vijay Sales",Electronics,Ahmedabad
+26,Lifestyle,Fashion,Hyderabad
+27,Pantaloons,Fashion,Kolkata
+28,Hometown,Furniture,Hyderabad
+29,FabIndia,Clothing,Delhi
+30,Levi’s,Apparel,Mumbai
+31,H&M,Apparel,Chennai
+32,Biba,"Ethnic Wear",Pune
+33,Westside,Fashion,Nagpur
+34,"Star Bazaar",Grocery,Ahmedabad
+35,"Nature’s Basket",Grocery,Mumbai
+36,"Indigo Airlines","Air Travel",Gurgaon
+37,"Air India","Air Travel",Delhi
+38,"Go First","Air Travel",Mumbai
+39,Domino’s,"Food Delivery",Bangalore
+40,"Pizza Hut","Food Delivery",Hyderabad
