@@ -1,0 +1,2 @@
+transaction_id,amount,customer_name,transaction_date,vendor_name,category
+62,105000.00,"Rohan Nair","2025-07-05 18:30:00","Big Bazaar",Grocery
