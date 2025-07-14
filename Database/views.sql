@@ -147,3 +147,72 @@ CREATE VIEW high_value_customers AS
 );
 SELECT * FROM high_value_customers;
 -- -----------------------------------------------------------------------------------------------------
+
+
+-- -----------------------------------------------------------------------------------------------------
+--  View 7 : CATEGORY_WISE_VENDOR_EARNING
+-- -----------------------------------------------------------------------------------------------------
+CREATE VIEW category_wise_vendor_earning AS(
+	SELECT
+		v.category,
+		SUM(t.amount) amount_earned
+	FROM vendors v
+	JOIN transactions t
+	ON v.vendor_id=t.vendor_id
+	WHERE t.status='success'
+	GROUP BY v.category
+);
+SELECT * FROM category_wise_vendor_earning;
+-- -----------------------------------------------------------------------------------------------------
+
+
+-- -----------------------------------------------------------------------------------------------------
+--  View 8 : PAYMENT_DONE_PER_CARD
+-- -----------------------------------------------------------------------------------------------------
+CREATE VIEW payment_done_per_card AS(
+	SELECT
+		cc.card_id,
+		cc.card_no,
+		cc.status,
+		SUM(COALESCE(p.amount,0)) total_payment
+	FROM credit_cards cc
+	LEFT JOIN payments p
+	ON cc.card_id=p.card_id
+	GROUP BY cc.card_id
+);
+SELECT * FROM payment_done_per_card;
+-- -----------------------------------------------------------------------------------------------------
+
+
+-- -----------------------------------------------------------------------------------------------------
+--  View 9 : PAYMENT_FREQUENCY_PER_CUSTOMER
+-- -----------------------------------------------------------------------------------------------------
+CREATE VIEW payment_frequency_per_customer AS(
+	WITH cte_customer_payment AS
+	(
+		SELECT
+			cu.customer_id,
+			cu.customer_name,
+			cu.customer_phone,
+			p.payment_date
+		FROM customers cu
+		LEFT JOIN credit_cards cc ON cu.customer_id=cc.customer_id
+		LEFT JOIN payments p ON cc.card_id=p.card_id
+	)
+	SELECT
+		customer_id,
+		customer_name,
+		COUNT(payment_date) total_payments,
+		MIN(payment_date) first_payment,
+		MAX(payment_date) last_payment,
+		DATEDIFF(MAX(payment_date),MIN(payment_date)) time_span_in_days,
+		CASE
+			WHEN DATEDIFF(MAX(payment_date),MIN(payment_date))>0 THEN
+				ROUND(COUNT(payment_date)/(DATEDIFF(MAX(payment_date),MIN(payment_date))/30.44),2)
+			ELSE 0.0
+		END payment_per_month
+	FROM cte_customer_payment
+	GROUP BY customer_id
+);
+SELECT * FROM payment_frequency_per_customer;
+-- -----------------------------------------------------------------------------------------------------

@@ -25,37 +25,18 @@ GROUP BY customer_name;
 --  Top 5 vendors by revenue
 -- -----------------------------------------------------------------------------------------------------
 SELECT
-	v.vendor_id,
-    v.vendor_name,
-    v.category,
-    SUM(t.amount) revenue
-FROM vendors v
-JOIN transactions t
-ON t.vendor_id=v.vendor_id
-WHERE t.status='success'
-GROUP BY v.vendor_id
-ORDER BY revenue DESC
+	vendor_id,
+    vendor_name,
+    category,
+    total_earned
+FROM vendor_performance
+ORDER BY total_earned DESC
 LIMIT 5;
 -- -----------------------------------------------------------------------------------------------------
 
 
 -- -----------------------------------------------------------------------------------------------------
 --  Query 3
---  Category-wise vendors earning
--- -----------------------------------------------------------------------------------------------------
-SELECT
-	v.category,
-    SUM(t.amount) amount_earned
-FROM vendors v
-JOIN transactions t
-ON v.vendor_id=t.vendor_id
-WHERE t.status='success'
-GROUP BY v.category;
--- -----------------------------------------------------------------------------------------------------
-
-
--- -----------------------------------------------------------------------------------------------------
---  Query 4
 --  Number of failed/reversed transactions per customer
 -- -----------------------------------------------------------------------------------------------------
 SELECT
@@ -75,7 +56,7 @@ GROUP BY cu.customer_id;
 
 
 -- -----------------------------------------------------------------------------------------------------
---  Query 5
+--  Query 4
 --  Highest single transaction ever made
 -- -----------------------------------------------------------------------------------------------------
 WITH cte_ranked_transactions AS
@@ -107,7 +88,7 @@ WHERE ranking=1;
 
 
 -- -----------------------------------------------------------------------------------------------------
---  Query 6
+--  Query 5
 --  Most used credit card details
 -- -----------------------------------------------------------------------------------------------------
 WITH cte_card_usage AS
@@ -143,22 +124,6 @@ WHERE count=(SELECT MAX(count) FROM cte_card_usage);
 
 -- -----------------------------------------------------------------------------------------------------
 --  Query 1
---  Total payments made per card
--- -----------------------------------------------------------------------------------------------------
-SELECT
-	cc.card_id,
-	cc.card_no,
-    cc.status,
-    SUM(COALESCE(p.amount,0)) total_payment
-FROM credit_cards cc
-LEFT JOIN payments p
-ON cc.card_id=p.card_id
-GROUP BY cc.card_id;
--- -----------------------------------------------------------------------------------------------------
-
-
--- -----------------------------------------------------------------------------------------------------
---  Query 2
 --  List of blocked cards with remaining balance
 -- -----------------------------------------------------------------------------------------------------
 SELECT
@@ -172,7 +137,7 @@ WHERE status='blocked';
 
 
 -- -----------------------------------------------------------------------------------------------------
---  Query 3
+--  Query 2
 --  Cards that are maxed out or nearly full i.e 90% used
 -- -----------------------------------------------------------------------------------------------------
 WITH cte_total_spending AS
@@ -227,38 +192,6 @@ HAVING MAX(t.transaction_date) IS NULL OR MAX(t.transaction_date) < NOW()-INTERV
 
 -- -----------------------------------------------------------------------------------------------------
 --  Query 1
---  Payment frequency per customer
--- -----------------------------------------------------------------------------------------------------
-WITH cte_customer_payment AS
-(
-	SELECT
-		cu.customer_id,
-        cu.customer_name,
-        cu.customer_phone,
-        p.payment_date
-	FROM customers cu
-    LEFT JOIN credit_cards cc ON cu.customer_id=cc.customer_id
-    LEFT JOIN payments p ON cc.card_id=p.card_id
-)
-SELECT
-	customer_id,
-    customer_name,
-    COUNT(payment_date) total_payments,
-    MIN(payment_date) first_payment,
-    MAX(payment_date) last_payment,
-    DATEDIFF(MAX(payment_date),MIN(payment_date)) time_span_in_days,
-    CASE
-		WHEN DATEDIFF(MAX(payment_date),MIN(payment_date))>0 THEN
-			ROUND(COUNT(payment_date)/(DATEDIFF(MAX(payment_date),MIN(payment_date))/30.44),2)
-		ELSE 0.0
-	END payment_per_month
-FROM cte_customer_payment
-GROUP BY customer_id;
--- -----------------------------------------------------------------------------------------------------
-
-
--- -----------------------------------------------------------------------------------------------------
---  Query 2
 --  3 most popular cities for credit card transactions
 -- -----------------------------------------------------------------------------------------------------
 SELECT
