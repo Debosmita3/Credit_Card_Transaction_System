@@ -108,10 +108,10 @@ CALL activate_blocked_card('4539876543210033', 'sourav.das03@example.com');
 ### ▶️ Setup Instructions
 1. Clone the repository
 2. Open MySQL Workbench or CLI
-3. Execute `credit_card_system.sql` in order:
-   - Create database and tables
-   - Insert sample data (provided here if needed)
-   - Create views and stored procedures
+3. Execute the .sql files in order:
+   - Create database and tables(schema.sql)
+   - Insert sample data (data_entries.sql)
+   - Create views and stored procedures (views.sql and stored_proceduress.sql)
 4. Run queries as needed
 
 ---
@@ -120,7 +120,7 @@ CALL activate_blocked_card('4539876543210033', 'sourav.das03@example.com');
 
 - **MySQL**
 - **MySQL Workbench**
-- Optional: ER diagramming tools (dbdiagram.io, draw.io)
+- **ER diagramming tools** (dbdiagram.io)
 
 ---
 
